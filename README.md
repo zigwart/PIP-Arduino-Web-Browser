@@ -1,16 +1,6 @@
 PIP
 ===
 
-PIP Arduino Web Browser
-
- ####  ###  ####
- #  #   #   #  #
- #  #   #   #  #
- ####   #   ####
- #      #   #
- #      #   #
- #     ###  #
- 
  PIP Micro Web Browser v0.7
  Suitable for 32KB Arduino/ATmega use.
  
