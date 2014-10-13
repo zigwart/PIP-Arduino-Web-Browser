@@ -1,6 +1,5 @@
 PIP
 ===
-
  PIP Micro Web Browser v0.7
  Suitable for 32KB Arduino/ATmega use.
  
@@ -9,6 +8,21 @@ PIP
  Creative Commons license:
  Attribution-NonCommercial 4.0 International.
  http://creativecommons.org/licenses/by-nc/4.0/
+ 
+ PIP is a functional and eveolving web browser for Arduino and runs well on 
+ an Uno. It can  download and render plain HTML (no images, CSS or 
+ Javascript) and follow  embedded links. It's joystick controlled and 
+ uses a 320x240 LCD screen  for output. 
+
+The Ethernet and SD card libraries use about 20KB of code, so the LCD 
+driver, HTML parser and renderer squeeze in under 12KB. 
+
+ Requires:
+ 
+ * Arduino Uno or similiar ATmega 328 powered board
+ * Wiz5100 powered Ethernet board with SD card slot (SPI CS = 10 & 4)
+ * 320x240 TFT LCD screen (SPI CS = 9)
+ * Analogue joystick with button (xBox style)
  
  Notes:
  
