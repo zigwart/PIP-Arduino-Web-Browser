@@ -14,8 +14,23 @@
  (c) Chris Anderson 2014.
  
  Creative Commons license:
- Attribution-NonCommercial 4.0 International.
- http://creativecommons.org/licenses/by-nc/4.0/
+ Creative Commons Attribution 4.0 International License
+ http://creativecommons.org/licenses/by/4.0/
+ 
+ PIP is a functional but incomplete web browser for Arduino and runs 
+ well on an Uno. It can  download and render plain HTML (no images, CSS 
+ or Javascript) and follow  embedded links. It's joystick controlled 
+ and uses a 320x240 LCD screen  for output. 
+ 
+ The Ethernet and SD card libraries use about 20KB of code, so the LCD 
+ driver, HTML parser and renderer squeeze in under 12KB. 
+ 
+ Requires:
+ 
+ * Arduino Uno or similiar ATmega 328 powered board
+ * Wiz5100 powered Ethernet board with SD card slot (SPI CS = 10 & 4)
+ * 320x240 TFT LCD screen (SPI CS = 9)
+ * Analogue joystick with button (xBox style)
  
  Notes:
  
@@ -31,18 +46,19 @@
  URL indexing.
  May fix this by going to relative pointers.
  
- Currently, URLs over 130 characters in size are truncated. This will undoubtably
+ Currently, URLs over 90 characters in size are truncated. This will undoubtably
  break them, or results in 404 errors.
  
  Doesn't do images. Come on, there's only 2KB of memory and a tiny screen 
- to play with! JPEG parsing might be problematic as there's only 4KB of 
+ to play with! JPEG parsing might be problematic as there's only 2KB of 
  program space free.
  
+ Forms are not even attempted. There's no keyboard, so goodluck with that.
  
  To do:
  Handle state case when a page break the middle of a tag.
  
- v0.7 
+ v0.7 14/10/2014
  Fixed exception for <script> and <style> tags. Improved resiliance
  to buffer under-runs with slow ethernet connections.
  
@@ -71,7 +87,7 @@
  ================================================*/
 
 #define DEBUG0  false   // Main loop / Setup - Turns of a world of serial output - 
-#define DEBUG1  false   // URLloading - You really don't want to turn these on 
+#define DEBUG1  true   // URLloading - You really don't want to turn these on 
 #define DEBUG2  false   // Page display - Really. Just don't 
 
 #include <Fat16.h>
@@ -524,7 +540,7 @@ byte cacheURL (char *URLserver, char *URLpath) {
     client.print (URLpath);
     client.print (F(" HTTP/1.1\nHost: "));
     client.println (URLserver);
-    client.println (F("Connection: close\n\n"));
+    client.println (F("User-Agent: Mozilla/4.0 (Mobile; PIP/7.0) PIP/7.0\nConnection: close\n\n"));
   } 
   else {
     tftLCD.println(F(" failed"));
@@ -834,7 +850,7 @@ byte cacheURL (char *URLserver, char *URLpath) {
       tftLCD.print (F(" bytes downloaded @ "));
       speed = downloadCount / ((millis() - startTime) / 1000);
       tftLCD.print (speed);
-      tftLCD.println (F(" bytes/sec      "));
+      tftLCD.println (F(" bytes/sec       "));
 
       if (fileLength > 0) {
         uint32_t percent = 0;
@@ -1145,8 +1161,8 @@ byte displayPage () {
   tftLCD.setBGColour(GREY);
   tftLCD.setTextColour(BLACK);
   tftLCD.print (lowestRAM);
-  tftLCD.setCursor (47, 0);
-  tftLCD.print (F("["));
+  tftLCD.setCursor (46, 0);
+  tftLCD.print (F(" p"));
   tftLCD.print (textContent.pagePtr + 1);
   tftLCD.print (F("/"));
   tftLCD.println (textContent.lastPage + 1);
@@ -1524,7 +1540,7 @@ byte findUntil (uint8_t *string, boolean terminate) {
 //================================================
 boolean inputWait() {
   byte wait = 0;
-  long timeOut = millis() + 5000;             // Allow 5 seconds of no data
+  long timeOut = millis() + 9000;             // Allow 5 seconds of no data
 #if (DEBUG1)
   Serial.println ();
 #endif
