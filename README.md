@@ -6,9 +6,9 @@ PIP
  (c) Chris Anderson 2014.
  
  Creative Commons license:
- Attribution-NonCommercial 4.0 International.
- http://creativecommons.org/licenses/by-nc/4.0/
- 
+ Creative Commons Attribution 4.0 International License
+ http://creativecommons.org/licenses/by/4.0/
+
  PIP is a functional and eveolving web browser for Arduino and runs well on 
  an Uno. It can  download and render plain HTML (no images, CSS or 
  Javascript) and follow  embedded links. It's joystick controlled and 
