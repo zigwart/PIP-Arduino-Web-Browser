@@ -30,7 +30,7 @@
  * Arduino Uno or similiar ATmega 328 powered board
  * Wiz5100 powered Ethernet board with SD card slot (SPI CS = 10 & 4)
  * 320x240 TFT LCD screen (SPI CS = 9) Found here: http://tinyurl.com/tftlcd
- * Analogue joystick with button (xBox style)
+ * Analogue joystick with button (PS2 style)
  
  Notes:
  
