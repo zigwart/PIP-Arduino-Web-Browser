@@ -29,15 +29,37 @@
  
  * Arduino Uno or similiar ATmega 328 powered board
  * Wiz5100 powered Ethernet board with SD card slot (SPI CS = 10 & 4)
- * 320x240 TFT LCD screen (SPI CS = 9) Found here: http://tinyurl.com/tftlcd
+ * 320x240 TFT LCD screen (SPI CS = 9)  Found here: http://tinyurl.com/tftlcd
  * Analogue joystick with button (PS2 style)
+ 
+ Wiring for LCD:
+ Name  Pin
+ SCLK  13  Clock
+ MOSI  11  Master Out - Don't change or you loose hardware assisted speed
+ CS    9   Chip Select
+ DC    8   Data/Comand
+ RST   7   Reset
+ LED   Arduino 3.3v
+ VCC   Arduino 5v
+ GND   Ground
+
+ Wiring for joystick:
+ VRx   A0 - Analogue input 0
+ VRy   A1
+ SW    A2
+ VCC   Arduino 5v
+ GND   Ground
  
  Notes:
  
  Handles a sub-set of HTML tags. See tags.h file for list.
  
+ HTML pages over 20KB or so can stall and fail somewhat randomly. The Wiz5100 
+ just doesn't seem to like dripping data to an Arduino much. Over 1KB/sec 
+ download speed can be cosidered 'good'.
+ 
  Due to poor Ethernet and SD card interaction on the SPI bus, the cace file
- on the SD card is held open as ong as possible and only closed and re-opened
+ on the SD card is held open as long as possible and only closed and re-opened
  during HTML download and parsing. That seems to make things ore reliable.
  
  HTML files are parsed and made partially binary before being stored on the CD card.
@@ -47,13 +69,16 @@
  May fix this by going to relative pointers.
  
  Currently, URLs over 90 characters in size are truncated. This will undoubtably
- break them, or results in 404 errors.
+ break them, or results in 404 errors. Which aren't handled well yet.
+ 
+ The LCD screen is used via a custom library (very similar to the Adafruit GFX 
+ library) which only implements rectangle and character drawing to save space.
  
  Doesn't do images. Come on, there's only 2KB of memory and a tiny screen 
  to play with! JPEG parsing might be problematic as there's only 2KB of 
  program space free.
  
- Forms are not even attempted. There's no keyboard, so goodluck with that.
+ Forms are not even attempted. There's no keyboard, so good luck with that.
  
  To do:
  Handle state case when a page break the middle of a tag.
