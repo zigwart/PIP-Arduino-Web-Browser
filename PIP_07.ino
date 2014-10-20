@@ -32,6 +32,15 @@
  * 320x240 TFT LCD screen (SPI CS = 9)  Found here: http://tinyurl.com/tftlcd
  * Analogue joystick with button (PS2 style)
  
+ Installation:
+
+ * Rename the enclosing folder of this file to "PIP_07.ino". 
+ * Copy the enclosing folder into you local Arduino sketch folder, as per 
+   usual for new programs.
+ * Plug an SD card (MAXIMUM 2GB) into your computer and copy the two 
+   files "CACHE.HTM" and "HOME.HTM" into the root level of the SD card.
+ * Put the SD card into your Ethernet shield and upload PIP to your Arduino.
+ 
  Wiring for LCD:
  Name  Pin
  SCLK  13  Clock
@@ -73,6 +82,8 @@
  
  The LCD screen is used via a custom library (very similar to the Adafruit GFX 
  library) which only implements rectangle and character drawing to save space.
+ As only rectangle drawing and the print command are used, it should be easy to 
+ adapt PIP to use a different LCD. 
  
  Doesn't do images. Come on, there's only 2KB of memory and a tiny screen 
  to play with! JPEG parsing might be problematic as there's only 2KB of 
