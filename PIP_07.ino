@@ -34,12 +34,15 @@
  
  Installation:
 
+ * Plug an SD card (MAXIMUM 2GB) into your computer and copy the file 
+  "CACHE.HTM" from this enclosing folder into the root level of the card.
+ * Download the file "HOME.HTM" from the URL below and put it in the enclosing
+   folder. Then copy the file to the root level of the SD card.
+   https://www.dropbox.com/s/v8h2d94uxxcw1oj/HOME.HTM?dl=0
+ * Put the SD card into your Ethernet shield and upload PIP to your Arduino.
  * Rename the enclosing folder of this file to "PIP_07.ino". 
  * Copy the enclosing folder into you local Arduino sketch folder, as per 
    usual for new programs.
- * Plug an SD card (MAXIMUM 2GB) into your computer and copy the two 
-   files "CACHE.HTM" and "HOME.HTM" into the root level of the SD card.
- * Put the SD card into your Ethernet shield and upload PIP to your Arduino.
  
  Wiring for LCD:
  Name  Pin
@@ -66,6 +69,9 @@
  HTML pages over 20KB or so can stall and fail somewhat randomly. The Wiz5100 
  just doesn't seem to like dripping data to an Arduino much. Over 1KB/sec 
  download speed can be cosidered 'good'.
+ 
+ Occationally when the browser crashes during a render, the HOME.HTM can get 
+ corrupted. Just copy the file in the enclosing folder back onto the SD card.
  
  Due to poor Ethernet and SD card interaction on the SPI bus, the cace file
  on the SD card is held open as long as possible and only closed and re-opened
