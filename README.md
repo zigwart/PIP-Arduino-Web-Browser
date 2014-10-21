@@ -24,6 +24,18 @@ PIP
  * 320x240 TFT LCD screen (SPI CS = 9)  Found here: http://tinyurl.com/tftlcd
  * Analogue joystick with button (PS2 style)
  
+ Installation:
+
+ * Plug an SD card (MAXIMUM 2GB) into your computer and copy the file 
+  "CACHE.HTM" from this enclosing folder into the root level of the card.
+ * Download the file "HOME.HTM" from the URL below and put it in the enclosing
+   folder. Then copy the file to the root level of the SD card.
+   https://www.dropbox.com/s/v8h2d94uxxcw1oj/HOME.HTM?dl=0
+ * Put the SD card into your Ethernet shield and upload PIP to your Arduino.
+ * Rename the enclosing folder of this file to "PIP_07.ino". 
+ * Copy the enclosing folder into you local Arduino sketch folder, as per 
+   usual for new programs.
+ 
  Wiring for LCD:
  Name  Pin
  SCLK  13  Clock
@@ -50,6 +62,9 @@ PIP
  just doesn't seem to like dripping data to an Arduino much. Over 1KB/sec 
  download speed can be cosidered 'good'.
  
+ Occationally when the browser crashes during a render, the HOME.HTM can get 
+ corrupted. Just copy the file in the enclosing folder back onto the SD card.
+ 
  Due to poor Ethernet and SD card interaction on the SPI bus, the cace file
  on the SD card is held open as long as possible and only closed and re-opened
  during HTML download and parsing. That seems to make things ore reliable.
@@ -65,6 +80,8 @@ PIP
  
  The LCD screen is used via a custom library (very similar to the Adafruit GFX 
  library) which only implements rectangle and character drawing to save space.
+ As only rectangle drawing and the print command are used, it should be easy to 
+ adapt PIP to use a different LCD. 
  
  Doesn't do images. Come on, there's only 2KB of memory and a tiny screen 
  to play with! JPEG parsing might be problematic as there's only 2KB of 
