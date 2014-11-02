@@ -48,11 +48,11 @@ PIP
  GND   Ground
 
  Wiring for joystick:
- VRx   A0 - Analogue input 0
- VRy   A1
- SW    A2
- VCC   Arduino 5v
- GND   Ground
+ * VRx   A0 - Analogue input 0
+ * VRy   A1
+ * SW    A2
+ * VCC   Arduino 5v
+ * GND   Ground
  
  Notes:
  
@@ -93,7 +93,7 @@ PIP
  Handle state case when a page break the middle of a tag.
  
  v0.7 14/10/2014
- Fixed exception for <script> and <style> tags. Improved resiliance
+ Fixed exception for &lt;script> and &lt;style> tags. Improved resiliance
  to buffer under-runs with slow ethernet connections.
  
  v0.6 1/10/2014
