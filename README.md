@@ -38,14 +38,14 @@ PIP
  
  Wiring for LCD:
  Name  Pin
- SCLK  13  Clock
- MOSI  11  Master Out - Don't change or you loose hardware assisted speed
- CS    9   Chip Select
- DC    8   Data/Comand
- RST   7   Reset
- LED   Arduino 3.3v
- VCC   Arduino 5v
- GND   Ground
+ * SCLK  13  Clock
+ * MOSI  11  Master Out - Don't change or you loose hardware assisted speed
+ * CS    9   Chip Select
+ * DC    8   Data/Comand
+ * RST   7   Reset
+ * LED   Arduino 3.3v
+ * VCC   Arduino 5v
+ * GND   Ground
 
  Wiring for joystick:
  * VRx   A0 - Analogue input 0
